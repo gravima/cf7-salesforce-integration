@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  wordpress:
+    image: wordpress:php8.0
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wp-app
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_SMTP_HOST: mailer
+      WORDPRESS_SMTP_PORT: 1025
+      WORDPRESS_CONFIG_EXTRA: |
+        define('FS_METHOD', 'direct');
+        define('SCRIPT_DEBUG', true);
+    volumes:
+      - ./:/var/www/html/wp-content/plugins/cf7-salesforce-form-action
+      - ./.srv/wordpress/:/var/www/html
+      - ./.srv/log/:/var/log
+      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
+
+  db:
+    image: mariadb:10
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/db:/docker-entrypoint-initdb.d
+    environment:
+      MARIADB_ROOT_PASSWORD: wordpress
+      MARIADB_DATABASE: wp-app
+      MARIADB_USER: wordpress
+      MARIADB_PASSWORD: wordpress
+
+volumes:
+  db_data:
