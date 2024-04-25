@@ -13,14 +13,10 @@ The CF7 Salesforce Integration plugin enables seamless connection between Contac
 1. **Download the Plugin**: Clone the [repository](https://github.com/gravima/cf7-salesforce-integration) or download the [ZIP file](https://github.com/gravima/cf7-salesforce-integration/archive/refs/heads/main.zip).
 2. **Upload Plugin Files**: Upload the plugin files to the `/wp-content/plugins/cf7-salesforce-integration` directory, or install the plugin using the ZIP file through the WordPress plugins screen directly.
 3. **Activate the Plugin**: Activate the plugin through the 'Plugins' screen in WordPress.
-4. **Configure Salesforce Endpoint**: Go to `Settings` > `Reading` in your WordPress admin panel and find the 'Salesforce Endpoint URL' setting. Enter the endpoint URL provided by your Salesforce configuration.
 
 ## Usage
 
-Once the plugin is active and the Salesforce endpoint is configured:
-
-- Forms will automatically capture and send data to the specified Salesforce endpoint when submitted.
-- Additional JavaScript enhancements like button disabling and redirect handling will be active.
+Once the plugin is active you can add the new form-tag `[salesforce "YOUR_ENDPOINT_URL"]` to the forms you want to connect to Salesforce. Replace `YOUR_ENDPOINT_URL` with the actual Salesforce form handler endpoint URL.
 
 ## Customization
 
