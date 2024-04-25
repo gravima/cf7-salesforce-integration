@@ -20,7 +20,7 @@ services:
         define('FS_METHOD', 'direct');
         define('SCRIPT_DEBUG', true);
     volumes:
-      - ./:/var/www/html/wp-content/plugins/cf7-salesforce-form-action
+      - ./:/var/www/html/wp-content/plugins/cf7-salesforce-integration
       - ./.srv/wordpress/:/var/www/html
       - ./.srv/log/:/var/log
       - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
