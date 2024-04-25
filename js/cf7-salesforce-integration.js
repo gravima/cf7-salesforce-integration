@@ -1,8 +1,12 @@
 jQuery(document).ready(function ($) {
   $('form.wpcf7-form').on('submit', function () {
     var $form = $(this);
-    var button = $form.find("input[type=submit]");
     var url = $form.find('input[name="_salesforce_endpoint"]').val();
+
+    if (!url) {
+      console.error('Salesforce endpoint not found', { url });
+      return true; // Allow normal form submission
+    }
 
     var formData = $form.serialize();
 
